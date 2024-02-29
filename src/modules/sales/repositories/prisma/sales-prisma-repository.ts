@@ -31,6 +31,19 @@ export class SalesPrismaRepository implements ISalesRepository {
 
   async read(): Promise<ReadSalesDto[]> {
     return await this.prisma.sales.findMany({
+      include: {
+        customer: {
+          select: {
+            name: true,
+          },
+        },
+        product: {
+          select: {
+            name: true,
+            price: true,
+          },
+        },
+      },
       where: {
         deletedAt: null,
       },

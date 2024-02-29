@@ -6,7 +6,7 @@ import { CreateSalesDto } from './dtos/create-sales-dto';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 
 @Controller('/sales')
-@ApiTags('sales')
+@ApiTags('Sales')
 export class CreateSalesController {
   constructor(
     private readonly createSalesUseCase: CreateSalesUseCase,
