@@ -1,7 +1,6 @@
 export interface SalesProps {
-  customer: string;
-  product?: string;
-  price?: number;
+  customerId: string;
+  productId: string;
   quantities: number;
   total: number;
   createdAt: Date;

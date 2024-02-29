@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ISalesRepository } from '../repositories/sales-repository';
 import { ICustomerRepository } from 'src/modules/customers/repositories/customer-repository';
 import { IProductRepository } from 'src/modules/products/repositories/product-repository';
-import { CreateSalesDtos } from '../dtos/create-sales-dtos';
+import { CreateSalesDto } from '../dtos/create-sales-dto';
 
 @Injectable()
 export class CreateSalesUseCase {
@@ -12,9 +12,9 @@ export class CreateSalesUseCase {
     private productRepository: IProductRepository,
   ) {}
 
-  async execute(data: CreateSalesDtos) {
-    const customer = await this.customerRepository.findById(data.customer_id);
-    const product = await this.productRepository.findById(data.product_id);
+  async execute(data: CreateSalesDto) {
+    const customer = await this.customerRepository.findById(data.customerId);
+    const product = await this.productRepository.findById(data.productId);
 
     if (!customer) {
       throw new HttpException(
@@ -30,15 +30,10 @@ export class CreateSalesUseCase {
       );
     }
 
-    const sales = {
-      customer: customer.name,
-      product: product.name,
-      price: product.price,
-      quantities: data.quantities,
-      total: Number(product.price * data.quantities),
-    };
+    const total = Number(product.price * data.quantities);
     await this.salesRepository.create({
-      ...sales,
+      ...data,
+      total,
     });
   }
 }

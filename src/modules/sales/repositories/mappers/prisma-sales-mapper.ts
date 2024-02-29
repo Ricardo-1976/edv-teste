@@ -5,9 +5,8 @@ export class PrismaSalesMapper {
   static toPrisma(sales: Sales) {
     return {
       id: sales.id,
-      customer: sales.customer,
-      product: sales.product,
-      price: sales.price,
+      customerId: sales.customerId,
+      productId: sales.productId,
       quantities: sales.quantities,
       total: sales.total,
       createdAt: sales.createdAt,
@@ -19,9 +18,8 @@ export class PrismaSalesMapper {
   static toDomain(raw: RawSales): Sales {
     return new Sales(
       {
-        customer: raw.customer,
-        product: raw.product,
-        price: raw.price,
+        customerId: raw.customerId,
+        productId: raw.productId,
         quantities: raw.quantities,
         total: raw.total,
         createdAt: raw.createdAt,

@@ -5,8 +5,10 @@ import { UpdateCustomerDto } from './dtos/update-customer-dto';
 import { UpdateCustomerUseCase } from './useCases/update-customer-usecase';
 import { ReadCustomerUseCase } from './useCases/read-customer-usecase';
 import { DeleteCustomerUseCase } from './useCases/delete-customer-usecase';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('/customer')
+@ApiTags('customer')
 export class CreateCustomerController {
   constructor(
     private readonly createCustomerUseCase: CreateCustomerUseCase,

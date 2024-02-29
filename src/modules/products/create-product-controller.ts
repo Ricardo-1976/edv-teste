@@ -5,8 +5,10 @@ import { ReadProductUseCase } from './useCases/read-product-usecase';
 import { DeleteProductUseCase } from './useCases/delete-product-usecase';
 import { CreateProductDto } from './dtos/create-product-dto';
 import { UpdateProductDto } from './dtos/update-product-dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('/product')
+@ApiTags('product')
 export class CreateProductController {
   constructor(
     private readonly createProductUseCase: CreateProductUseCase,

@@ -1,9 +1,8 @@
 import { IsNotEmpty } from 'class-validator';
 
 export class CreateSalesDto {
-  customer?: string;
-  product?: string;
-  price?: number;
+  customerId: string;
+  productId: string;
   total?: number;
   @IsNotEmpty()
   quantities: number;

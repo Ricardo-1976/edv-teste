@@ -2,9 +2,11 @@ import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateSalesUseCase } from './useCases/create-sales-usecase';
 import { ReadSalesUseCase } from './useCases/read-sales-usecase';
 import { DeleteSalesUseCase } from './useCases/delete-sales-usecase';
-import { CreateSalesDtos } from './dtos/create-sales-dtos';
+import { CreateSalesDto } from './dtos/create-sales-dto';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 
 @Controller('/sales')
+@ApiTags('sales')
 export class CreateSalesController {
   constructor(
     private readonly createSalesUseCase: CreateSalesUseCase,
@@ -12,8 +14,9 @@ export class CreateSalesController {
     private readonly deleteSalesUseCase: DeleteSalesUseCase,
   ) {}
 
+  @ApiBody({})
   @Post('/')
-  async create(@Body() data: CreateSalesDtos) {
+  async create(@Body() data: CreateSalesDto) {
     await this.createSalesUseCase.execute(data);
   }
 

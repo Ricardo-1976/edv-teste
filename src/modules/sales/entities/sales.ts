@@ -18,28 +18,20 @@ export class Sales {
     return this.id;
   }
 
-  public set customer(customer: string) {
-    this.props.customer = customer;
+  public set customerId(customerId: string) {
+    this.props.customerId = customerId;
   }
 
-  public get customer(): string {
-    return this.props.customer;
+  public get customerId(): string {
+    return this.props.customerId;
   }
 
-  public set product(product: string) {
-    this.props.product = product;
+  public set productId(productId: string) {
+    this.props.productId = productId;
   }
 
-  public get product(): string {
-    return this.props.product;
-  }
-
-  public set price(price: number) {
-    this.props.price = price;
-  }
-
-  public get price(): number {
-    return this.props.price;
+  public get productId(): string {
+    return this.props.productId;
   }
 
   public set quantities(quantities: number) {

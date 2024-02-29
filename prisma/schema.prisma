@@ -20,6 +20,7 @@ model Customer {
   createdAt DateTime  @default(now())
   updatedAt DateTime?
   deletedAt DateTime?
+  Sales     Sales[]
 
   @@map("customers")
 }
@@ -35,15 +36,17 @@ model Product {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime?
   deletedAt  DateTime?
+  Sales      Sales[]
 
   @@map("products")
 }
 
 model Sales {
   id         String    @id @default(uuid())
-  customer   String
-  product    String
-  price      Float
+  customer   Customer  @relation(fields: [customerId], references: [id])
+  product    Product   @relation(fields: [productId], references: [id])
+  customerId String
+  productId  String
   quantities Int
   total      Float
   createdAt  DateTime  @default(now())
