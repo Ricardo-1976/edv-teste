@@ -1,12 +1,12 @@
 import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helpers/Replace';
-import { ProductProps } from '../interface/product-interface';
+import { SalesProps } from '../interface/sales-interface';
 
-export class Product {
+export class Sales {
   private _id: string;
-  private props: ProductProps;
+  private props: SalesProps;
 
-  constructor(props: Replace<ProductProps, { createdAt?: Date }>, id?: string) {
+  constructor(props: Replace<SalesProps, { createdAt?: Date }>, id?: string) {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
@@ -18,36 +18,20 @@ export class Product {
     return this.id;
   }
 
-  public set name(name: string) {
-    this.props.name = name;
+  public set customer(customer: string) {
+    this.props.customer = customer;
   }
 
-  public get name(): string {
-    return this.props.name;
+  public get customer(): string {
+    return this.props.customer;
   }
 
-  public set descrption(descrption: string) {
-    this.props.descrption = descrption;
+  public set product(product: string) {
+    this.props.product = product;
   }
 
-  public get descrption(): string {
-    return this.props.descrption;
-  }
-
-  public set type(type: string) {
-    this.props.type = type;
-  }
-
-  public get type(): string {
-    return this.props.type;
-  }
-
-  public set barcode(barcode: number) {
-    this.props.barcode = barcode;
-  }
-
-  public get barcode(): number {
-    return this.props.barcode;
+  public get product(): string {
+    return this.props.product;
   }
 
   public set price(price: number) {
@@ -64,6 +48,14 @@ export class Product {
 
   public get quantities(): number {
     return this.props.quantities;
+  }
+
+  public set total(total: number) {
+    this.props.total = total;
+  }
+
+  public get total(): number {
+    return this.props.total;
   }
 
   public get createdAt(): Date {

@@ -1,13 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helpers/Replace';
-
-export interface CustomerProps {
-  name: string;
-  email: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
-}
+import { CustomerProps } from '../interface/customer-interface';
 
 export class Customer {
   private _id: string;
